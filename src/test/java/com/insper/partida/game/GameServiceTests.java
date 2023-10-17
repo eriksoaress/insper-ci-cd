@@ -46,7 +46,7 @@ public class GameServiceTests {
         Mockito.when(teamService.getTeam("time-2")).thenReturn(team2);
         GameReturnDTO gameReturnDTO = gameService.saveGame(saveGameDTO);
 
-        Assertions.assertEquals("time-1", gameReturnDTO.getStatus());
+        Assertions.assertEquals("SCHEDULED", gameReturnDTO.getStatus());
 
 
     }
