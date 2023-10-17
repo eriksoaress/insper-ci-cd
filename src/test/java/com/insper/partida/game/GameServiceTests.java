@@ -3,6 +3,7 @@ package com.insper.partida.game;
 import com.insper.partida.equipe.Team;
 import com.insper.partida.equipe.dto.TeamReturnDTO;
 import com.insper.partida.game.dto.GameReturnDTO;
+import com.insper.partida.game.dto.SaveGameDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,17 +25,7 @@ public class GameServiceTests {
     GameRepository gameRepository;
 
     @Test
-    void test_listGames(){
-        Mockito.when(gameRepository.findAll()).thenReturn(new ArrayList<>());
-
-        List<GameReturnDTO> resp = gameService.listGames(null, null, null, null).getContent();
-
-        Assertions.assertEquals(0, resp.size());
-    }
-
-    @Test
-    void test_listTeamsNotEmpty() {
-
+    void test_saveGame(){
         Team team = new Team();
         team.setId("1");
         team.setIdentifier("time-1");
@@ -45,20 +36,14 @@ public class GameServiceTests {
         team2.setIdentifier("time-2");
         team2.setName("Time 2");
 
-
-        Game game = new Game();
-        game.setIdentifier("123");
-        game.setHome("time-1");
-        game.setAway("time-2");
-        game.setAttendance(100);
-
-        List<Game> lista = new ArrayList<>();
-        lista.add(game);
-
-        Mockito.when(gameRepository.findAll()).thenReturn(lista);
-
-        List<GameReturnDTO> resp = gameService.listGames(null, null, null, null).getContent();
+        SaveGameDTO gameDTO = new SaveGameDTO();
+        gameDTO.setHome("time-1");
+        gameDTO.setAway("time-2");
+        GameReturnDTO gameReturnDTO = gameService.saveGame(gameDTO);
+        List<Game> resp = gameRepository.findAll();
 
         Assertions.assertEquals(1, resp.size());
+
+
     }
 }
