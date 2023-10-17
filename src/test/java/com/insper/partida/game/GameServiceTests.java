@@ -1,6 +1,7 @@
 package com.insper.partida.game;
 
 import com.insper.partida.equipe.Team;
+import com.insper.partida.equipe.TeamService;
 import com.insper.partida.equipe.dto.TeamReturnDTO;
 import com.insper.partida.game.dto.GameReturnDTO;
 import com.insper.partida.game.dto.SaveGameDTO;
@@ -21,6 +22,8 @@ public class GameServiceTests {
     @InjectMocks
     GameService gameService;
 
+    @Mock
+    TeamService teamService;
     @Mock
     GameRepository gameRepository;
 
