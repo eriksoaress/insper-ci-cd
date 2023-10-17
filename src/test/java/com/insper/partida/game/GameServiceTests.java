@@ -42,12 +42,12 @@ public class GameServiceTests {
         SaveGameDTO gameDTO = new SaveGameDTO();
         gameDTO.setHome("time-1");
         gameDTO.setAway("time-2");
+
         Mockito.when(teamService.getTeam("time-1")).thenReturn(team);
         Mockito.when(teamService.getTeam("time-2")).thenReturn(team2);
         GameReturnDTO gameReturnDTO = gameService.saveGame(gameDTO);
-        List<Game> resp = gameRepository.findAll();
 
-        Assertions.assertEquals(1, resp.size());
+        Assertions.assertEquals("time-1", gameReturnDTO.getHome());
 
 
     }
