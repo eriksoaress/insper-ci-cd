@@ -2,7 +2,6 @@ package com.insper.partida.game;
 
 import com.insper.partida.equipe.Team;
 import com.insper.partida.equipe.TeamService;
-import com.insper.partida.equipe.dto.TeamReturnDTO;
 import com.insper.partida.game.dto.GameReturnDTO;
 import com.insper.partida.game.dto.SaveGameDTO;
 import org.junit.jupiter.api.Assertions;
@@ -47,7 +46,7 @@ public class GameServiceTests {
         Mockito.when(teamService.getTeam("time-2")).thenReturn(team2);
         GameReturnDTO gameReturnDTO = gameService.saveGame(saveGameDTO);
 
-        Assertions.assertEquals("time-1", gameReturnDTO.getHome());
+        Assertions.assertEquals("time-1", gameReturnDTO.getStatus());
 
 
     }
