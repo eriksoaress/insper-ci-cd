@@ -30,22 +30,22 @@ public class GameServiceTests {
     @Test
     void test_saveGame(){
         Team team = new Team();
-        team.setId("1");
+        team.setStadium("estadio-1");
         team.setIdentifier("time-1");
-        team.setName("Time 1");
+        team.setName("time-1");
 
         Team team2 = new Team();
-        team2.setId("2");
+        team2.setStadium("estadio-2");
         team2.setIdentifier("time-2");
-        team2.setName("Time 2");
+        team2.setName("time-2");
 
-        SaveGameDTO gameDTO = new SaveGameDTO();
-        gameDTO.setHome("time-1");
-        gameDTO.setAway("time-2");
+        SaveGameDTO saveGameDTO = new SaveGameDTO();
+        saveGameDTO.setHome("time-1");
+        saveGameDTO.setAway("time-2");
 
         Mockito.when(teamService.getTeam("time-1")).thenReturn(team);
         Mockito.when(teamService.getTeam("time-2")).thenReturn(team2);
-        GameReturnDTO gameReturnDTO = gameService.saveGame(gameDTO);
+        GameReturnDTO gameReturnDTO = gameService.saveGame(saveGameDTO);
 
         Assertions.assertEquals("time-1", gameReturnDTO.getHome());
 
